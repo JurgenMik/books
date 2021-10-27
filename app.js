@@ -1,4 +1,4 @@
-// Seotud muutujad
+// .Seotud muutujad
 const form = document.querySelector('form');
 const bookTitle = document.querySelector('#title');
 const bookAuthor = document.querySelector('#author');
