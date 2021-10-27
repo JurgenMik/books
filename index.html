@@ -8,15 +8,21 @@
     <style>
 
      label {
-         font-size: 12px;
+         font-size: 13px;
          font-weight: bold;
-         margin-left: 4px;
+         color: #26a69abf;
 
      }
 
     .btn {
         display:flex;
         margin: auto;
+    }
+
+    a {
+        color: red;
+        font-size: 10px;
+
     }
 
     </style>
@@ -34,11 +40,11 @@
      <label for="isbn"> ISBN# </label>
      <input type="text" id="isbn">
 
-     <button class="btn" type="submit"> SUBMIT </button>
+     <button id="del-book" class="btn" type="submit"> SUBMIT </button>
 
  </form>
 
-     <table>
+      <table id="myTable">
          <thead>
          <tr>
              <th> Title </th>
@@ -49,13 +55,12 @@
 
          <tbody>
          <tr>
-             <td> Tõde ja õigus </td>
-             <td> A.H Tammsaare </td>
-             <td> 123789 </td>
+
          </tr>
          </tbody>
 
-     </table>
+      </table>
+
 
 
 <script src="app.js"></script>
