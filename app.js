@@ -10,7 +10,7 @@ const delBook = document.querySelector('#myTable');
 form.addEventListener('submit', addBook);
 delBook.addEventListener('click', deleteBook);
 
-// järgneb eventListenerile
+// järgneb eventListenerile.
 
 function deleteBook(e) {
 
