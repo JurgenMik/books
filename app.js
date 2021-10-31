@@ -53,10 +53,31 @@ function addBook(e) {
     link.appendChild(document.createTextNode('X'))
     row.appendChild(link);
 
+    // Save input Book data to LocalStorage
+
+    addBookToLocalStorage(book,author,isbn);
+
 
  e.preventDefault();
 
 }
 
+function  addBookToLocalStorage(book,author,isbn) {
+  let bookData;
+  let bookTitleAuthorIsbn = [];
+  if(localStorage.getItem('bookData') === null) {
+    bookData = [];
+  } else {
+    bookData = JSON.parse(localStorage.getItem('bookData'));
+  }
+  bookTitleAuthorIsbn.push(book);
+  bookTitleAuthorIsbn.push(author);
+  bookTitleAuthorIsbn.push(isbn);
+
+  bookData.push(bookTitleAuthorIsbn)
+
+  localStorage.setItem('bookData', JSON.stringify(bookData));
+
+}
 
 
