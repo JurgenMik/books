@@ -9,21 +9,44 @@ const delBook = document.querySelector('#myTable');
 
 form.addEventListener('submit', addBook);
 delBook.addEventListener('click', deleteBook);
+//document.addEventliStener('DOMContentLoaded', getBooksFromLocalStorage);
+
+// function getBooksFromlocalStorage(){}
 
 // järgneb eventListenerile.
 
-function deleteBook(e) {
+function deleteBook(event) {
 
-    if(e.target.textContent == 'X') {
-      e.target.parentElement.remove();
-
+    if(event.target.textContent == 'X') {
+       event.target.parentElement.remove();
+       book = event.target.parentElement.firstChild.textContent;
+       deleteBookFromLocalStorage(book);
     }
+
+}
+
+function deleteBookFromLocalStorage(book) {
+  let bookData;
+  if(localStorage.getItem('bookData') === null) {
+    bookData = [];
+  } else {
+    bookData = JSON.parse(localStorage.getItem('bookData'));
+    //console.log(bookData);
+  }
+  bookData.forEach(function(bookDataElement,index){
+    if(bookDataElement[0] === book) {
+       bookData.splice(index, 3);
+    }
+
+  });
+
+  localStorage.setItem('bookData', JSON.stringify(bookData));
 
 }
 
 // järgneb eventListenerile
 
-function addBook(e) {
+function addBook(event) {
 
   // vormi input
 
@@ -58,7 +81,7 @@ function addBook(e) {
     addBookToLocalStorage(book,author,isbn);
 
 
- e.preventDefault();
+ event.preventDefault();
 
 }
 
@@ -70,6 +93,7 @@ function  addBookToLocalStorage(book,author,isbn) {
   } else {
     bookData = JSON.parse(localStorage.getItem('bookData'));
   }
+
   bookTitleAuthorIsbn.push(book);
   bookTitleAuthorIsbn.push(author);
   bookTitleAuthorIsbn.push(isbn);
