@@ -9,9 +9,38 @@ const delBook = document.querySelector('#myTable');
 
 form.addEventListener('submit', addBook);
 delBook.addEventListener('click', deleteBook);
-//document.addEventliStener('DOMContentLoaded', getBooksFromLocalStorage);
+document.addEventListener('DOMContentLoaded', getBooksFromLocalStorage);
 
-// function getBooksFromlocalStorage(){}
+function getBooksFromLocalStorage() {
+  let bookData;
+  if(localStorage.getItem('bookData') === null) {
+    bookData = [];
+  } else {
+    bookData = JSON.parse(localStorage.getItem('bookData'));
+  }
+
+  bookData.forEach(function(bookDataElement){
+
+    const bookTable = document.getElementById('myTable');
+    const row = bookTable.insertRow(1);
+
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    let cell3 = row.insertCell(2);
+
+    cell1.innerHTML = bookDataElement[0];
+    cell2.innerHTML = bookDataElement[1];
+    cell3.innerHTML = bookDataElement[2];
+
+    const link = document.createElement('a');
+
+    link.setAttribute('href', '#');
+
+    link.appendChild(document.createTextNode('X'))
+    row.appendChild(link);
+
+  });
+}
 
 // järgneb eventListenerile.
 
